@@ -22,7 +22,7 @@ public class Colla {
         return this.nom;
     }
     
-    public void setNecessitaTitulat (Boolean neessitaTitulat) {
+    public void setNecessitaTitulat (Boolean necessitaTitulat) {
         this.necessitaTitulat = necessitaTitulat;
     }
     
