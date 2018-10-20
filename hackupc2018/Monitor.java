@@ -64,6 +64,9 @@ public class Monitor {
         return this.collesNo;
     }
     
+    /*
+    El domini d'un monitor són totes les colles que SI que són compatibles
+    */
     public void crearDomini(HashMap<String, Colla> colles) {
         this.domini = new ArrayList<>(colles.size());
         Set<String> nomsCollesTotals = colles.keySet();

@@ -7,11 +7,13 @@ import java.util.ArrayList;
 public class Assignacio {
     //atributs
     private HashMap<Colla, ArrayList<String>> Assig;
-    private boolean fallo;
-    
+
+    private boolean fallo = false;
     
     public ArrayList<Colla> getCollesRestants(){
+        
         ArrayList<Colla> Restants = new ArrayList<>();
+
         
         
         return Restants;        

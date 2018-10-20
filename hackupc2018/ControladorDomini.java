@@ -15,8 +15,8 @@ public class ControladorDomini {
     }
     
     public void inicialitzarCtrlDomini() {
-        monitors = new HashMap<String, Monitor>();
-        colles = new HashMap<String, Colla>();
+        monitors = new HashMap<>();
+        colles = new HashMap<>();
         
     }
     //crea la colla
@@ -65,6 +65,7 @@ public class ControladorDomini {
     public HashMap getAllColles() {
         return this.colles;
     }
+    
     
 
 }
