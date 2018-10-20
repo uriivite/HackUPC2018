@@ -12,6 +12,9 @@ public class ControladorPresentacio {
     private VistaRestriccions vistaR;
     private VistaSolucio vistaS;
     
+    private ArrayList<ArrayList<String>> monitors;
+    private ArrayList<ArrayList<String>> colles;
+    
     // Fa falta que les vistes puguin fer actuar el Controldor de la Presentació.
     // Per això hi ha el (this), així a les classes de les vistes podem jugar
     // amb l'objecte ControladorDomini.
@@ -38,6 +41,7 @@ public class ControladorPresentacio {
     }
     
     public void sincroVistaAMAVistaAC() {
+        this.monitors = vistaAM.getMonitors();
         vistaAM.setVisible(false);
         vistaAM.desactivar();
         vistaAC.setVisible(true);
@@ -45,6 +49,7 @@ public class ControladorPresentacio {
     }
     
     public void sincroVistaACAVistaR() {
+        this.colles = vistaAC.getColles();
         vistaAC.setVisible(false);
         vistaAC.desactivar();
         vistaR.setVisible(true);
@@ -66,10 +71,6 @@ public class ControladorPresentacio {
         ctrlDom.eliminarMonitor(nomMonitor);
     }
     
-    public void assignarMonisNo();
-    
-    public void assignarCollesNo();
-    
     public Boolean crearColla(String nomColla, Boolean necessitaTitulat) {
         return ctrlDom.crearColla(nomColla, necessitaTitulat);
     }
@@ -86,20 +87,12 @@ public class ControladorPresentacio {
         ctrlDom.setJaNoTeTitulat(c);
     }
     
-    public HashMap getAllMonitors() {
-        return ctrlDom.getAllMonitors();
+    public ArrayList<ArrayList<String>> getMonitors() {
+        return this.monitors;
     }
     
-    public HashMap getAllColles() {
-        return ctrlDom.getAllColles();
-    }
-    
-    public miPair<Monitor, Colla> Assignar(Monitor moni, Colla c){
-        return ctrlDom.Assignar(moni, c);
-    }
-    
-    public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
-        return ctrlDom.backtracking_cronologic(monitors_restants, solucio);
+    public ArrayList<ArrayList<String>> getColles() {
+        return this.colles;
     }
     
     
