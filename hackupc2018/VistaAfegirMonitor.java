@@ -5,14 +5,21 @@
  */
 package hackupc2018;
 
+import java.util.ArrayList;
+
 
 public class VistaAfegirMonitor extends javax.swing.JFrame {
 
     
     private ControladorPresentacio CtrlPresentacio;
+    private int nMonitors;
+    private ArrayList<ArrayList<String>> monitors;
     
     public VistaAfegirMonitor(ControladorPresentacio CP) {
         this.CtrlPresentacio = CP;
+        this.nMonitors = 0;
+        this.monitors = new ArrayList<>();
+        this.monitors.ensureCapacity(1);
         initComponents();
     }
     
@@ -42,6 +49,10 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         jPanel1.setEnabled(false);
         jTextField1.setEnabled(false);
         jTextField2.setEnabled(false);
+    }
+    
+    public ArrayList<ArrayList<String>> getMonitors() {
+        return this.monitors;
     }
     
 
@@ -131,6 +142,11 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Següent monitor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
@@ -174,7 +190,7 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addComponent(jLabel1)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(52, 52, 52)
@@ -190,7 +206,7 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,33 +256,25 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.CtrlPresentacio.sincroVistaAMAVistaAC();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-      /*  try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaAfegirMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaAfegirMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaAfegirMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaAfegirMonitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }*/
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String nom = jTextField2.getText();
+        String edat = jTextField1.getText();
+        Boolean titulacio = jCheckBox1.isSelected();
+        String titul = titulacio.toString();
+        ArrayList<String> monitor = new ArrayList(3);
+        monitor.add(0, nom); monitor.add(1, edat); monitor.add(2, titul);
+        this.nMonitors++; 
+        this.monitors.ensureCapacity(this.nMonitors);
+        this.monitors.add(monitor);
+        jTextField2.removeAll(); 
+        jTextField1.removeAll(); 
+        jCheckBox1.removeAll();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
