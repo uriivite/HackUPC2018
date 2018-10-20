@@ -58,5 +58,12 @@ public class Monitor {
         return this.collesNo;
     }
     
+    public miPair<Monitor, Colla> Assignar(Colla c){
+        miPair<Monitor, Colla> assig = null;
+        assig.setFirst(this);
+        assig.setSecond(c);
+        return assig;
+    }
+    
 }
 
