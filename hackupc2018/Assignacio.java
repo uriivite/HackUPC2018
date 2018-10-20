@@ -2,8 +2,6 @@ package hackupc2018;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 /* Una Assignació és una distribució parcial o final de Monitors i Colles de la 
     forma que cada Colla té Monitors assignats.
@@ -72,11 +70,8 @@ public class Assignacio {
     public void fallo() {
         fallo = true;
     }
-    
-    /*
-     * Retorna les colles que no es troben a l'Assignació ?
-     * O retorna les colles que sí que es troben a l'Assignació?
-    */
+
+    // Retorna les colles que poden ser assignades.
     public ArrayList<Colla> getCollesRestants() {
        ArrayList<Colla> Restants = new ArrayList();
        // int nColles = this.CD.getAllColles().size();
