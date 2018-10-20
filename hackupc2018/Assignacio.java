@@ -15,10 +15,9 @@ public class Assignacio {
     //private ControladorDomini CD;
     private boolean fallo;
     
-    public Assignacio(/*ControladorDomini CD*/) {
+    public Assignacio() {
         Assig = new HashMap<>();
         this.fallo = false;
-       // this.CD = CD;
     }
     
     /*
@@ -51,24 +50,31 @@ public class Assignacio {
         for (HashMap.Entry<Colla, ArrayList> entry : Assig.entrySet()) {
             // Recorrem la llista de Monitors
             for (int i = 0; i < entry.getValue().size(); i++){
-                if (nomMonitor == entry.getValue().get(i)) 
+                if (nomMonitor == entry.getValue().get(i)) {
                     entry.getValue().remove(i);
+                    if (entry.getValue().isEmpty())
+                        this.Assig.remove(entry.getKey());
+                }
             }
         }
+    }
+    
+    public HashMap getDistribucio() {
+        return this.Assig;
     }
     
     /*
      * Retorna si la actual distribució és certa parcial o completament.
     */
     public boolean esFallo(){
-        return fallo;
+        return this.fallo;
     }
     
     /*
      * Marca que la actual distribució no és certa.
     */
     public void fallo() {
-        fallo = true;
+        this.fallo = true;
     }
 }
 
