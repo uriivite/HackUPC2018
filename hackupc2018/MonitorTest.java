@@ -129,24 +129,6 @@ public class MonitorTest {
     }
 
     /**
-     * Test of getDomini method, of class Monitor.
-     */
-    @Test
-    public void testGetDomini() { //FALTA ACABAR-LA
-        System.out.println("getDomini");
-        Monitor moni = new Monitor("Aniol", 21, false);
-        String s1 = "Colla 1";
-        String s2 = "Colla 2";
-        HashMap<String, Colla>
-        moni.crearDomini()
-        ArrayList expResult = null;
-        ArrayList result = instance.getDomini();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of setMonisNo method, of class Monitor.
      */
     @Test
@@ -214,12 +196,16 @@ public class MonitorTest {
      * Test of crearDomini method, of class Monitor.
      */
     @Test
-    public void testCrearDomini() { //Falta
+    public void testCrearDomini() {
         System.out.println("crearDomini");
-        HashMap<String, Colla> colles = null;
-        Monitor instance = null;
-        instance.crearDomini(colles);
-
+        HashMap<String, Colla> colles = new HashMap();
+        colles.put("Petits", new Colla("Petits", false));
+        ArrayList expResult = new ArrayList();
+        expResult.add("Petits");
+        Monitor m = new Monitor("Oriol");
+        m.crearDomini(colles);
+        ArrayList result = m.getDomini();
+        assertEquals(expResult, result);
     }
     
 }
