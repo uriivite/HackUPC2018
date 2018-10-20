@@ -1,24 +1,12 @@
-package hackupc2018;
-
-
-public class HackUPC2018 {
-
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
-
-
 //Algorisme backtracking per buscar solucio:
 
-    //solució completa serà quan tots els monitors estan a una colla (i no es trenca cap restricció) ja es comprova amb cada crida recursiva 
-    //solucio al principi estarà buida, ja que hi anem afegint les colles i els monitors nosaltres, al final de tota la recursió
+    //solució completa serà quan tots els monitors estan assignats a una colla i no s'incumpleix cap restricció.
+    //La solucio al principi estarà buida, ja que hi anem afegint les colles i els monitors nosaltres, al final de tota la recursió
     //estarà plena amb una distribució de monitors a les colles correcta
-public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio){
+public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
     Monitor monitor_actual;
     if (monitors_restants.empty()) return solucio;
-else {
+    else{
         monitor_actual = monitors_restants.first();
         monitors_restants.remove(0);
         ArrayList<Colla> CollesRestants = new ArrayList<Colla>();
