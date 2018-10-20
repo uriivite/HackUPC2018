@@ -90,7 +90,38 @@ public class ControladorDomini {
         return this.colles;
     }
     
-    
+    //Algorisme backtracking per buscar solucio:
+
+    //solució completa serà quan tots els monitors estan assignats a una colla i no s'incumpleix cap restricció.
+    //La solucio al principi estarà buida, ja que hi anem afegint les colles i els monitors nosaltres, al final de tota la recursió
+    //estarà plena amb una distribució de monitors a les colles correcta
+public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
+    Monitor monitor_actual;
+    if (monitors_restants.isEmpty()) return solucio;
+    else {
+        monitor_actual = monitors_restants.get(0);
+        monitors_restants.remove(0);
+        ArrayList<Colla> CollesRestants = new ArrayList<Colla>();
+        CollesRestants = getCollesDisponibles(monitor_actual);
+        for (int i = 0; i < CollesRestants.size(); ++i) {
+            miPair<Monitor, Colla> assig = monitor_actual.Assignar(CollesRestants.get(i));
+            solucio.Afegir(assig); //afegeix el monitor a la colla corresponent en la solució actual
+            solucio = backtracking_cronologic(monitors_restants, solucio);
+            if (solucio.esFallo() == false) return solucio; //per saber si és fallo mirarem el valor que sabem que si és fallo estarà a -1
+            else solucio.Borrar(monitor_actual);            
+        }
+    solucio.fallo();    
+    return solucio;  
+    }
+}
+//}
+
+//solucion.valida serà un map de <colla, arrayList<monitor>> i mirarà si el monitor que acabem d'afegir té algun problema amb 
+//els altres monitors de la mateixa key del map (colla). Cada colla tindrà entre 2 i 4 monitors si no te cap problema es retorna true, 
+//si algun dels altres monitors o ell mateix té algun problema amb algun dels altres monitors o amb la colla a la que s'ha assignat 
+//es retorna fals
+
+//amb getCollesRestants() retornem les colles que no
 
 }
 
