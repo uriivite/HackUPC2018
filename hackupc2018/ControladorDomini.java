@@ -10,7 +10,6 @@ public class ControladorDomini {
     private HashMap<String, Colla> colles;
     
     
-    
     public ControladorDomini() {
         inicialitzarCtrlDomini();
     }
