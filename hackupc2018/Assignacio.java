@@ -2,18 +2,16 @@ package hackupc2018;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 
 public class Assignacio {
     //atributs
     private HashMap<Colla, ArrayList<String>> Assig;
+    private boolean fallo;
     
     
     public ArrayList<Colla> getCollesRestants(){
-        ArrayList<Colla> Restants = new ArrayList<Colla>();
+        ArrayList<Colla> Restants = new ArrayList<>();
         
         
         return Restants;        
@@ -41,6 +39,14 @@ public class Assignacio {
                if (s == entry.getValue().get(i)) entry.getValue().remove(i);
            }
        }
+    }
+    
+    public boolean esFallo(){
+        return fallo;
+    }
+    
+    public void fallo(){
+        fallo = true;
     }
 }
 
