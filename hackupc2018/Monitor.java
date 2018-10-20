@@ -1,8 +1,6 @@
 
 package hackupc2018;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 
 public class Monitor {
     private String nom;
@@ -10,7 +8,6 @@ public class Monitor {
     private Boolean titulat;
     private ArrayList monisNo;
     private ArrayList collesNo;
-    private ArrayList domini;
     
     
     public Monitor(String nom) {
@@ -47,10 +44,6 @@ public class Monitor {
         return this.titulat;
     }
     
-    public ArrayList getDomini() {
-        return this.domini;
-    }
-    
     public void setMonisNo(ArrayList monisNo) {
         this.monisNo = monisNo;
     }
@@ -65,12 +58,5 @@ public class Monitor {
         return this.collesNo;
     }
     
-    public void crearDomini(HashMap<String, Colla> colles) {
-        this.domini = new ArrayList<>(colles.size());
-        Set<String> nomsCollesTotals = colles.keySet();
-        for (String s : nomsCollesTotals) {
-            if (!collesNo.contains(s))
-                this.domini.add(s);
-        }
-    }
 }
+
