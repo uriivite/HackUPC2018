@@ -16,6 +16,9 @@ public class Monitor {
     public Monitor(String nom) {
         this.nom = nom;
         this.assignat = false;
+        this.monisNo = new ArrayList();
+        this.collesNo = new ArrayList();
+        this.domini = new ArrayList();
     }
     
     public Monitor(String nom, Integer edat, Boolean titulat) {
@@ -23,6 +26,9 @@ public class Monitor {
         this.edat = edat;
         this.titulat = titulat;
         this.assignat = false;
+        this.monisNo = new ArrayList();
+        this.collesNo = new ArrayList();
+        this.domini = new ArrayList();
     }
     
     public void assignar(boolean b) {
@@ -81,7 +87,7 @@ public class Monitor {
     El domini d'un monitor són totes les colles que SI que són compatibles
     */
     public void crearDomini(HashMap<String, Colla> colles) {
-        this.domini = new ArrayList<>(colles.size());
+        this.domini.ensureCapacity(colles.size());
         Set<String> nomsCollesTotals = colles.keySet();
         for (String s : nomsCollesTotals) {
             if (!collesNo.contains(s))
