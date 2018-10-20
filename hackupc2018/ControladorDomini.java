@@ -24,6 +24,23 @@ public class ControladorDomini {
         return mR;
     }
      
+    private ArrayList getCollesDisponibles(Monitor m) {
+        ArrayList collesDisp = m.getDomini();
+        ArrayList monitorsIncompatibles = m.getMonisNo();
+        for (Object monitorIncompatible : monitorsIncompatibles) {
+            ArrayList dominiAux = this.monitors.get(monitorIncompatible).getDomini();
+            for (int i = 0; i < dominiAux.size(); ++i) {
+                String nomAux = (String) dominiAux.get(i);
+                Monitor monAux = this.monitors.get(nomAux);
+                ArrayList collesAux = monAux.getCollesNo();
+                for (int j = 0; j < collesAux.size(); ++i) {
+                    collesDisp.remove(collesAux.get(j));
+                }
+            }
+        }
+        return collesDisp;
+    }
+     
     public ControladorDomini() {
         this.monitors = new HashMap<>();
         this.colles = new HashMap<>();
