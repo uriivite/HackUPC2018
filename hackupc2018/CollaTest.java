@@ -81,26 +81,16 @@ public class CollaTest {
         Boolean teTitulat = false;
         Colla instance = new Colla("grans", true);
         instance.setJaTeTitulat(teTitulat);
+        Boolean expResult = false;
+        assertEquals(expResult, instance.getJaTeTitulat());
     }
 
     @Test
     public void testGetJaTeTitulat() {
         System.out.println("getJaTeTitulat");
-        Colla instance = null;
-        Boolean expResult = null;
+        Colla instance = new Colla("grans", true);
+        Boolean expResult = false;
         Boolean result = instance.getJaTeTitulat();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testGetJaNoTeTitulat() {
-        System.out.println("getJaNoTeTitulat");
-        Colla instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getJaNoTeTitulat();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-    
+    }    
 }
