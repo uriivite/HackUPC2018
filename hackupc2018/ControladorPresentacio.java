@@ -14,6 +14,8 @@ public class ControladorPresentacio {
     
     private ArrayList<ArrayList<String>> monitors;
     private ArrayList<ArrayList<String>> colles;
+    private HashMap <String, miPair<ArrayList, ArrayList>> incomp;
+   
     
     // Fa falta que les vistes puguin fer actuar el Controldor de la Presentació.
     // Per això hi ha el (this), així a les classes de les vistes podem jugar
@@ -26,6 +28,7 @@ public class ControladorPresentacio {
         vistaAC = new VistaAfegirColla(this);
         vistaR = new VistaRestriccions(this);
         vistaS = new VistaSolucio(this);
+        incomp = new HashMap();
     }
     
     public void inicialitzarPresentacio() {
@@ -94,6 +97,13 @@ public class ControladorPresentacio {
     public ArrayList<ArrayList<String>> getColles() {
         return this.colles;
     }
+    
+    public void afegeixIncompatibilitats(String moni, ArrayList<String> monisNo, ArrayList<String> collesNo) {
+        miPair aux = new miPair(monisNo, collesNo);
+        incomp.put(moni,aux);
+    }
+    
+    
     
     
     

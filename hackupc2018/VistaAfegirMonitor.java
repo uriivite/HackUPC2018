@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class VistaAfegirMonitor extends javax.swing.JFrame {
 
-    
+
     private ControladorPresentacio CtrlPresentacio;
     private int nMonitors;
     private ArrayList<ArrayList<String>> monitors;
-    
+
     public VistaAfegirMonitor(ControladorPresentacio CP) {
         this.CtrlPresentacio = CP;
         this.nMonitors = 0;
@@ -22,7 +22,7 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         this.monitors.ensureCapacity(1);
         initComponents();
     }
-    
+
     public void ferVisible() {
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
@@ -36,7 +36,7 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         jTextField1.setEnabled(true);
         jTextField2.setEnabled(true);
     }
-    
+
     public void desactivar() {
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
@@ -50,11 +50,11 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
         jTextField2.setEnabled(false);
     }
-    
+
     public ArrayList<ArrayList<String>> getMonitors() {
         return this.monitors;
     }
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -267,15 +267,15 @@ public class VistaAfegirMonitor extends javax.swing.JFrame {
         String titul = titulacio.toString();
         ArrayList<String> monitor = new ArrayList(3);
         monitor.add(0, nom); monitor.add(1, edat); monitor.add(2, titul);
-        this.nMonitors++; 
+        this.nMonitors++;
         this.monitors.ensureCapacity(this.nMonitors);
         this.monitors.add(monitor);
-        jTextField2.removeAll(); 
-        jTextField1.removeAll(); 
+        jTextField2.removeAll();
+        jTextField1.removeAll();
         jCheckBox1.removeAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-       
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
