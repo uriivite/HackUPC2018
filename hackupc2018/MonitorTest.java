@@ -155,8 +155,8 @@ public class MonitorTest {
         String s1 = "Jordi";
         String s2 = "Oriol";
         ArrayList monisNo = new ArrayList<>(2);
-        monisNo.set(0, s1);
-        monisNo.set(1, s2);
+        monisNo.add(0, s1);
+        monisNo.add(1, s2);
         Monitor moni = new Monitor("Aniol", 21, false);
         moni.setMonisNo(monisNo);
         ArrayList monisNO2 = moni.getMonisNo();
@@ -171,8 +171,8 @@ public class MonitorTest {
         System.out.println("getMonisNo");
         Monitor moni = new Monitor("Aniol", 21, false);
         ArrayList monisNo = new ArrayList<>(2);
-        monisNo.set(0, "Jordi");
-        monisNo.set(1, "Oriol");
+        monisNo.add(0, "Oriol");
+        monisNo.add(1, "Jordi");
         moni.setMonisNo(monisNo);
         ArrayList expResult = monisNo;
         ArrayList result = moni.getMonisNo();
@@ -186,8 +186,8 @@ public class MonitorTest {
     public void testSetCollesNo() {
         System.out.println("setCollesNo");
         ArrayList collesNo = new ArrayList<>(2);
-        collesNo.set(0, "nens petits");
-        collesNo.set(1, "nens grans");
+        collesNo.add(0, "nens petits");
+        collesNo.add(1, "nens grans");
         Monitor moni = new Monitor("Aniol", 21, false);
         moni.setCollesNo(collesNo);
         ArrayList collesNo2 = moni.getCollesNo();
@@ -202,8 +202,8 @@ public class MonitorTest {
         System.out.println("getCollesNo");
         Monitor moni = new Monitor("Aniol", 21, false);
         ArrayList collesNo = new ArrayList<>(2);
-        collesNo.set(0, "nens petits");
-        collesNo.set(1, "nens grans");
+        collesNo.add(0, "nens petits");
+        collesNo.add(1, "nens grans");
         moni.setCollesNo(collesNo);
         ArrayList expResult = collesNo;
         ArrayList result = moni.getCollesNo();
@@ -219,20 +219,6 @@ public class MonitorTest {
         HashMap<String, Colla> colles = null;
         Monitor instance = null;
         instance.crearDomini(colles);
-
-    }
-
-    /**
-     * Test of Assignar method, of class Monitor.
-     */
-    @Test
-    public void testAssignar_Colla() {
-        System.out.println("Assignar");
-        Colla c = new Colla("nens petits", true);
-        Monitor moni = new Monitor("Aniol", 21, false);
-        miPair<Monitor, Colla> expResult = new miPair(moni, c);
-        miPair<Monitor, Colla> result = moni.Assignar(c);
-        assertEquals(expResult, result);
 
     }
     
