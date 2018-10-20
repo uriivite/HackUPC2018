@@ -9,16 +9,14 @@ public class ControladorDomini {
     private HashMap<String, Monitor> monitors;
     private HashMap<String, Colla> colles;
     
+    // La solucio final: private Assignacions AA;
+    
     
     public ControladorDomini() {
-        inicialitzarCtrlDomini();
+        this.monitors = new HashMap<>();
+        this.colles = new HashMap<>();
     }
     
-    public void inicialitzarCtrlDomini() {
-        monitors = new HashMap<>();
-        colles = new HashMap<>();
-        
-    }
     //crea la colla
     //si el nom ja existia retorna FALSE
     //si la crea retorna TRUE
@@ -40,7 +38,7 @@ public class ControladorDomini {
         moniP.setCollesNo(collesNo);
     }
     
-    public boolean crearColla (String nomColla, Boolean necessitaTitulat) {
+    public boolean crearColla(String nomColla, Boolean necessitaTitulat) {
         if (colles.containsKey(nomColla)) return false;
         colles.put(nomColla, new Colla(nomColla, necessitaTitulat));
         return true;
