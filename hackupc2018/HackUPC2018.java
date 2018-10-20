@@ -18,7 +18,7 @@ public class HackUPC2018 {
 public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio){
     Monitor monitor_actual;
     if (monitors_restants.empty()) return solucio;
-    else{
+else {
         monitor_actual = monitors_restants.first();
         monitors_restants.remove(0);
         ArrayList<Colla> CollesRestants = new ArrayList<Colla>();
