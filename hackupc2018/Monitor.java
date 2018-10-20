@@ -1,4 +1,3 @@
-
 package hackupc2018;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,5 +71,11 @@ public class Monitor {
             if (!collesNo.contains(s))
                 this.domini.add(s);
         }
+    }
+    public miPair<Monitor, Colla> Assignar(Colla c){
+        miPair<Monitor, Colla> assig = null;
+        assig.setFirst(this);
+        assig.setSecond(c);
+        return assig;
     }
 }
