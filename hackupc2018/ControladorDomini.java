@@ -100,16 +100,9 @@ public class ControladorDomini {
         if (this.colles.containsKey(s)) return true;
         else return false;
     }
+
     
-    public HashMap getAllMonitors() {
-        return this.monitors;
-    }
-    
-    public HashMap getAllColles() {
-        return this.colles;
-    }
-    
-    public miPair<Monitor, Colla> Assignar(Monitor moni, Colla c){
+    public miPair<Monitor, Colla> Assignar(Monitor moni, Colla c) {
         miPair<Monitor, Colla> assig = new miPair(moni, c);
         return assig;
     }
