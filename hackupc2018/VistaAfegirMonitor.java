@@ -5,5 +5,5 @@
 package hackupc2018;
 
 public class VistaAfegirMonitor {
-    
+    private ControladorPresentacio CP;
 }
