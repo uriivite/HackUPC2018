@@ -9,9 +9,21 @@ public class ControladorDomini {
     
     private HashMap<String, Monitor> monitors;
     private HashMap<String, Colla> colles;
-    // La solucio final: private Assignacions AA;
+    // La solucio final: 
+    private Assignacions AA;
     
-    
+    // Crec que necessitarem un metode privat que digui quins son els monitors
+    // que no han estats assignats encara en un moment determinat.
+     private ArrayList<Monitor> monitorsRestants() {
+        ArrayList<Monitor> mR = new ArrayList();
+        for (HashMap.Entry<String, Monitor> entry : monitors.entrySet()) {
+            // Recorrem la llista de Monitors
+            if (!entry.getValue().assignat())
+                mR.add(entry.getValue());
+        }
+        return mR;
+    }
+     
     public ControladorDomini() {
         this.monitors = new HashMap<>();
         this.colles = new HashMap<>();
