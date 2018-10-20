@@ -6,12 +6,12 @@
 public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
     Monitor monitor_actual;
     if (monitors_restants.empty()) return solucio;
-    else{
+else {
         monitor_actual = monitors_restants.first();
         monitors_restants.remove(0);
         ArrayList<Colla> CollesRestants = new ArrayList<Colla>();
         CollesRestants = solucio.getCollesRestants();
-        for (i = 0; i < CollesRestants; ++i){
+        for (i = 0; i < CollesRestants; ++i) {
             miPair<Monitor, Colla> assig = monitor_actual.Assignar(CollesRestants.get(i));
            
             solucio.afegir(assig); //afegeix el monitor a la colla corresponent en la solució actual
