@@ -92,6 +92,7 @@ public class Monitor {
     public miPair<Monitor, Colla> Assignar(Colla c){
         miPair assig;
         assig = new miPair(this, c);
+        this.assignat = true;
         return assig;
     }
 }
