@@ -10,20 +10,31 @@ public class Monitor {
     private ArrayList monisNo;
     private ArrayList collesNo;
     private ArrayList domini;
+    private boolean assignat;
     
     
     public Monitor(String nom) {
         this.nom = nom;
+        this.assignat = false;
     }
     
     public Monitor(String nom, Integer edat, Boolean titulat) {
         this.nom = nom;
         this.edat = edat;
         this.titulat = titulat;
+        this.assignat = false;
+    }
+    
+    public void assignar(boolean b) {
+        this.assignat = b;
     }
     
     public void setNom(String nom) {
         this.nom = nom;
+    }
+    
+    public boolean assignat() {
+        return this.assignat;
     }
     
     public String getNom() {
@@ -33,6 +44,8 @@ public class Monitor {
     public void setEdat(Integer edat) {
         this.edat = edat;
     }
+    
+    
     
     public Integer getEdat() {
         return this.edat;
