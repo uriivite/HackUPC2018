@@ -12,6 +12,7 @@ public class Colla {
     public Colla (String nom, Boolean necessitaTitulat) {
         this.nom = nom;
         this.necessitaTitulat = necessitaTitulat;
+        this.jaTeTitulat = false;
     }
     
     public void setNom (String nom) {
@@ -36,10 +37,5 @@ public class Colla {
     
     public Boolean getJaTeTitulat() {
         return this.jaTeTitulat;
-    }
-    
-    public Boolean getJaNoTeTitulat() {
-        return this.jaTeTitulat;
-    }
-    
+    }    
 }
