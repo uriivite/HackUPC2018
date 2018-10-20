@@ -56,12 +56,20 @@ public class ControladorDomini {
         monitors.remove(nomMonitor);
     }
     
+     public Monitor getMonitor(String s){
+        return this.monitors.get(s);
+    }
+    
+    public Colla getColla(String s){
+        return this.colles.get(s);
+    }
+    
     public void assignarMonisNo(Monitor moniP, ArrayList monisNo) {
-        moniP.setMonisNo(monisNo);
+        this.getMonitor(moniP.getNom()).setMonisNo(monisNo);
     }
     
     public void assignarCollesNo(Monitor moniP, ArrayList collesNo) {
-        moniP.setCollesNo(collesNo);
+        this.getMonitor(moniP.getNom()).setCollesNo(collesNo);
     }
     
     public boolean crearColla(String nomColla, Boolean necessitaTitulat) {
@@ -75,12 +83,23 @@ public class ControladorDomini {
     }
     
     public void setJaTeTitulat (Colla c) {
-        c.setJaTeTitulat(true);
+        this.getColla(c.getNom()).setJaTeTitulat(true);
     }
     
     public void setJaNoTeTitulat (Colla c) {
-        c.setJaTeTitulat(false);
+        this.getColla(c.getNom()).setJaTeTitulat(false);
     }   
+    
+    
+    public Boolean existeixMonitor(String s){
+        if (this.monitors.containsKey(s)) return true;
+        else return false;
+    }
+    
+    public Boolean existeixColla(String s){
+        if (this.colles.containsKey(s)) return true;
+        else return false;
+    }
     
     public HashMap getAllMonitors() {
         return this.monitors;
