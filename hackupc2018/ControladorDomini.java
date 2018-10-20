@@ -9,7 +9,6 @@ public class ControladorDomini {
     
     private HashMap<String, Monitor> monitors;
     private HashMap<String, Colla> colles;
-    
     // La solucio final: private Assignacions AA;
     
     
@@ -18,9 +17,6 @@ public class ControladorDomini {
         this.colles = new HashMap<>();
     }
     
-    //crea la colla
-    //si el nom ja existia retorna FALSE
-    //si la crea retorna TRUE
     public boolean crearMonitor (String nomMonitor, Integer edat, Boolean titulat) {
         if (monitors.containsKey(nomMonitor)) return false;
         monitors.put(nomMonitor, new Monitor(nomMonitor, edat, titulat));
