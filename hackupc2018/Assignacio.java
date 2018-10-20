@@ -70,16 +70,6 @@ public class Assignacio {
     public void fallo() {
         fallo = true;
     }
-
-    // Retorna les colles que poden ser assignades.
-    public ArrayList<Colla> getCollesRestants() {
-       ArrayList<Colla> Restants = new ArrayList();
-       // int nColles = this.CD.getAllColles().size();
-        /////////////////////////
-        // Aquí falta codi
-        /////////////////////////
-        return Restants;        
-    }
 }
 
 
