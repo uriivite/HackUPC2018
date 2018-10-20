@@ -90,6 +90,11 @@ public class ControladorDomini {
         return this.colles;
     }
     
+    public miPair<Monitor, Colla> Assignar(Monitor moni, Colla c){
+        miPair<Monitor, Colla> assig = new miPair(moni, c);
+        return assig;
+    }
+        
     //Algorisme backtracking per buscar solucio:
 
     //solució completa serà quan tots els monitors estan assignats a una colla i no s'incumpleix cap restricció.
@@ -103,10 +108,13 @@ public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, 
         monitors_restants.remove(0);
         ArrayList<Colla> CollesRestants = getCollesDisponibles(monitor_actual);
         for (int i = 0; i < CollesRestants.size(); ++i) {
-            miPair<Monitor, Colla> assig = monitor_actual.Assignar(CollesRestants.get(i));
+            miPair<Monitor, Colla> assig = Assignar(monitor_actual, CollesRestants.get(i));
             solucio.Afegir(assig); //afegeix el monitor a la colla corresponent en la solució actual
             solucio = backtracking_cronologic(monitors_restants, solucio);
-            if (solucio.esFallo() == false) return solucio; //per saber si és fallo mirarem el valor que sabem que si és fallo estarà a -1
+            if (solucio.esFallo() == false){
+                this.AA.afegirAssignacio(solucio);
+                return solucio;
+            } //per saber si és fallo mirarem el valor que sabem que si és fallo estarà a -1
             else solucio.Borrar(monitor_actual);            
         }
     solucio.fallo();    
