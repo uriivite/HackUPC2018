@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class ControladorDomini {
     
     //atributs
+    
     private HashMap<String, Monitor> monitors;
     private HashMap<String, Colla> colles;
     
