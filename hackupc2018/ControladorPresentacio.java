@@ -103,6 +103,25 @@ public class ControladorPresentacio {
         incomp.put(moni,aux);
     }
     
+    public void generarSolucions() {
+        for (int i = 0; i < this.monitors.size(); i++) {
+            int edat = Integer.parseInt(this.monitors.get(i).get(1));
+            boolean titulat = Boolean.parseBoolean(this.monitors.get(i).get(2));
+            this.ctrlDom.crearMonitor(this.monitors.get(i).get(0), edat, titulat);
+        }
+        for (int i = 0; i < this.colles.size(); ++i) {
+            boolean nT = Boolean.parseBoolean(this.colles.get(i).get(1)); // Necessita titulat
+            this.ctrlDom.crearColla(this.colles.get(i).get(0), nT);
+        }
+        for (int i = 0; i < this.monitors.size(); i++) {
+            ArrayList monisInc = this.incomp.get(i).getFirst();
+            ArrayList collesInc = this.incomp.get(i).getSecond();
+            this.ctrlDom.assignarMonisInc(this.monitors.get(i).get(0), monisInc);
+            this.ctrlDom.assignarCollesInc(this.monitors.get(i).get(0), collesInc);
+        }
+        this.ctrlDom.generarSolucio();
+    }
+    
     
     
     
