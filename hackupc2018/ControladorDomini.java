@@ -68,8 +68,16 @@ public class ControladorDomini {
         this.getMonitor(moniP.getNom()).setMonisNo(monisNo);
     }
     
+    public void assignarMonisInc(String nom, ArrayList monisNo) {
+        this.monitors.get(nom).setMonisNo(monisNo);
+    }
+    
     public void assignarCollesNo(Monitor moniP, ArrayList collesNo) {
         this.getMonitor(moniP.getNom()).setCollesNo(collesNo);
+    }
+    
+    public void assignarCollesInc(String nom, ArrayList collesNo) {
+        this.monitors.get(nom).setMonisNo(collesNo);
     }
     
     public boolean crearColla(String nomColla, Boolean necessitaTitulat) {
@@ -106,13 +114,18 @@ public class ControladorDomini {
         miPair<Monitor, Colla> assig = new miPair(moni, c);
         return assig;
     }
+    
+    public ArrayList generarSolucio() {
+        ArrayList<HashMap<String, ArrayList<String>>> solucions =  AA.getAssignacions();
+        return solucions;
+    }
         
     //Algorisme backtracking per buscar solucio:
 
     //solució completa serà quan tots els monitors estan assignats a una colla i no s'incumpleix cap restricció.
     //La solucio al principi estarà buida, ja que hi anem afegint les colles i els monitors nosaltres, al final de tota la recursió
     //estarà plena amb una distribució de monitors a les colles correcta
-public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
+private  Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
     Monitor monitor_actual;
     if (monitors_restants.isEmpty()) return solucio;
     else {
