@@ -94,4 +94,5 @@ public class Monitor {
                 this.domini.add(s);
         }
     }
+    
 }

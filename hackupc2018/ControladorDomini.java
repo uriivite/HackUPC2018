@@ -116,6 +116,11 @@ public class ControladorDomini {
     }
     
     public ArrayList generarSolucio() {
+        ArrayList<Monitor> monitorsRestants = new ArrayList(this.monitors.size());
+        for (Monitor m : this.monitors.values())
+            monitorsRestants.add(m);
+        Assignacio solucio = new Assignacio();
+        this.backtracking_cronologic(monitorsRestants, solucio);
         ArrayList<HashMap<String, ArrayList<String>>> solucions = AA.getAssignacions();
         return solucions;
     }
@@ -125,25 +130,23 @@ public class ControladorDomini {
     //solució completa serà quan tots els monitors estan assignats a una colla i no s'incumpleix cap restricció.
     //La solucio al principi estarà buida, ja que hi anem afegint les colles i els monitors nosaltres, al final de tota la recursió
     //estarà plena amb una distribució de monitors a les colles correcta
-public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
+private void backtracking_cronologic(ArrayList<Monitor> monitors_restants, Assignacio solucio) {
     Monitor monitor_actual;
-    if (monitors_restants.isEmpty()) return solucio;
-    else {
+    if (!monitors_restants.isEmpty()) {
         monitor_actual = monitors_restants.get(0);
         monitors_restants.remove(0);
         ArrayList<Colla> CollesRestants = getCollesDisponibles(monitor_actual);
         for (int i = 0; i < CollesRestants.size(); ++i) {
             miPair<Monitor, Colla> assig = Assignar(monitor_actual, CollesRestants.get(i));
             solucio.Afegir(assig); //afegeix el monitor a la colla corresponent en la solució actual
-            solucio = backtracking_cronologic(monitors_restants, solucio);
+            backtracking_cronologic(monitors_restants, solucio);
             if (solucio.esFallo() == false){
                 this.AA.afegirAssignacio(solucio);
-                return solucio;
+                
             } //per saber si és fallo mirarem el valor que sabem que si és fallo estarà a -1
             else solucio.Borrar(monitor_actual);            
         }
-    solucio.fallo();    
-    return solucio;  
+        solucio.fallo();
     }
 }
 //}

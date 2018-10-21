@@ -79,7 +79,6 @@ public class VistaAfegirColla extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(255, 255, 153));
         jTextField2.setFont(new java.awt.Font("Georgia Pro", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setText("Escriu el nom de la colla aquí");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -141,7 +140,7 @@ public class VistaAfegirColla extends javax.swing.JFrame {
                             .addGap(262, 262, 262)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -208,6 +207,7 @@ public class VistaAfegirColla extends javax.swing.JFrame {
         Boolean necessitaTitol = jCheckBox1.isSelected();
         String titol = necessitaTitol.toString();
         ArrayList<String> colla = new ArrayList(2);
+        CtrlPresentacio.crearColla(nom, necessitaTitol);
         colla.add(0, nom); 
         colla.add(1, titol);
         this.ncolles++;

@@ -5,38 +5,64 @@
  */
 package hackupc2018;
 
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-/**
- *
- * @author sd000
- */
 public class VistaSolucio extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaSolucio
      */
     private ControladorPresentacio CtrlPresentacio;
+    private String[] nomsColumnes;
+    private Object[][] data;
     private JTable taula;
     
+
     public VistaSolucio(ControladorPresentacio CP) {
         this.CtrlPresentacio = CP;
-        // ------------------------------
-        this.CP.obtenirAssignacions();
-        // ------------------------------
-        initComponents();
+        HashMap solucio = this.CtrlPresentacio.getSolucio();
+        this.CtrlPresentacio.incrementarIterador();
+        this.nomsColumnes = new String[solucio.size()];
+        int i = 0;
+        for (Iterator it = solucio.keySet().iterator(); it.hasNext();) {
+            String colla = (String)it.next();
+            this.nomsColumnes[i] = colla;
+            ++i;
+        }
+        i = 0;
+        this.data = new Object[solucio.size()][this.CtrlPresentacio.getMonitors().size()];
+        for (Iterator it = solucio.values().iterator(); it.hasNext();) {
+            ArrayList monitors = (ArrayList) it.next();
+            for (int j = 0; j < monitors.size(); ++j) {
+                this.data[i][j] = monitors.get(j);
+            }
+            ++i;
+        }
+        this.taula = new JTable(data, nomsColumnes);
+        JPanel Panel = new JPanel((LayoutManager) taula);
+        taula.setFillsViewportHeight(true);
+      //  Panel.setLayout(new BorderLayout());
+        Panel.add(taula, BorderLayout.CENTER);
+       // initComponents();
     }
-    
+
     public void ferVisible() {
         jLabel1.setEnabled(true);
         jPanel1.setEnabled(true);
     }
-    
+
     public void desactivar() {
         jLabel1.setEnabled(false);
         jPanel1.setEnabled(false);
     }
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.

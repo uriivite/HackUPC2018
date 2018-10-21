@@ -60,7 +60,7 @@
                               <Component id="jButton1" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jTextField2" min="-2" pref="241" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="212" max="32767" attributes="0"/>
@@ -146,7 +146,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Escriu el nom de la colla aqu&#xed;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>

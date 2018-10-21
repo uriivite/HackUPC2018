@@ -1,4 +1,3 @@
-
 package hackupc2018;
 
 import java.util.HashMap;
@@ -11,10 +10,12 @@ public class ControladorPresentacio {
     private VistaAfegirColla vistaAC;
     private VistaRestriccions vistaR;
     private VistaSolucio vistaS;
+    private int iterador = 0;
     
     private ArrayList<ArrayList<String>> monitors;
     private ArrayList<ArrayList<String>> colles;
     private HashMap <String, miPair<ArrayList, ArrayList>> incomp;
+    private ArrayList solucions;
    
     
     // Fa falta que les vistes puguin fer actuar el Controldor de la Presentació.
@@ -60,10 +61,18 @@ public class ControladorPresentacio {
     }
     
     public void sincroVistaRAVistaS() {
+        this.solucions = this.generarSolucions();
         vistaR.setVisible(false);
         vistaR.desactivar();
         vistaS.setVisible(true);
         vistaS.ferVisible();
+    }
+    public HashMap getSolucio() {
+        return (HashMap) this.solucions.get(this.iterador);
+    }
+    
+    public void incrementarIterador() {
+        this.iterador++;
     }
     
     public Boolean crearMonitor(String nomMonitor, int edat, Boolean titol) {
@@ -103,7 +112,7 @@ public class ControladorPresentacio {
         incomp.put(moni,aux);
     }
     
-    public void generarSolucions() {
+    public ArrayList generarSolucions() {
         for (int i = 0; i < this.monitors.size(); i++) {
             int edat = Integer.parseInt(this.monitors.get(i).get(1));
             boolean titulat = Boolean.parseBoolean(this.monitors.get(i).get(2));
@@ -119,7 +128,7 @@ public class ControladorPresentacio {
             this.ctrlDom.assignarMonisInc(this.monitors.get(i).get(0), monisInc);
             this.ctrlDom.assignarCollesInc(this.monitors.get(i).get(0), collesInc);
         }
-        this.ctrlDom.generarSolucio();
+        return this.ctrlDom.generarSolucio();
     }
     
     
