@@ -106,6 +106,19 @@ public class ControladorDomini {
         miPair<Monitor, Colla> assig = new miPair(moni, c);
         return assig;
     }
+    
+    public void assignarMonisInc(String nom, ArrayList monisNo) {
+        this.monitors.get(nom).setMonisNo(monisNo);
+    }
+    
+    public void assignarCollesInc(String nom, ArrayList collesNo) {
+        this.monitors.get(nom).setMonisNo(collesNo);
+    }
+    
+    public ArrayList generarSolucio() {
+        ArrayList<HashMap<String, ArrayList<String>>> solucions = AA.getAssignacions();
+        return solucions;
+    }
         
     //Algorisme backtracking per buscar solucio:
 
@@ -143,4 +156,3 @@ public Assignacio backtracking_cronologic(ArrayList<Monitor> monitors_restants, 
 //amb getCollesRestants() retornem les colles que no
 
 }
-

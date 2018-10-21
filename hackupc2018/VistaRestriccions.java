@@ -1,14 +1,13 @@
 package hackupc2018;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JComboBox;
 
 
 public class VistaRestriccions extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VistaRestriccions
-     */
     private ControladorPresentacio CtrlPresentacio;
     
     private ArrayList<ArrayList<String>> colles;
@@ -21,8 +20,6 @@ public class VistaRestriccions extends javax.swing.JFrame {
     
     public VistaRestriccions(ControladorPresentacio CP) {
         this.CtrlPresentacio = CP;
-        this.colles = CtrlPresentacio.getColles();
-        this.monitors = CtrlPresentacio.getMonitors();
         this.moniActual = new String();
         this.moniNoActual = new String();
         this.monisNo = new ArrayList();
@@ -34,9 +31,6 @@ public class VistaRestriccions extends javax.swing.JFrame {
     public void ferVisible() {
         jButton1.setEnabled(true);
         jButton3.setEnabled(true);
-        jComboBox1.setEnabled(true);
-        jComboBox2.setEnabled(true);
-        jComboBox3.setEnabled(true);
         jLabel1.setEnabled(true);
         jLabel2.setEnabled(true);
         jLabel3.setEnabled(true);
@@ -47,9 +41,6 @@ public class VistaRestriccions extends javax.swing.JFrame {
     public void desactivar() {
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
-        jComboBox1.setEnabled(false);
-        jComboBox2.setEnabled(false);
-        jComboBox3.setEnabled(false);
         jLabel1.setEnabled(false);
         jLabel2.setEnabled(false);
         jLabel3.setEnabled(false);
@@ -63,16 +54,16 @@ public class VistaRestriccions extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,16 +73,6 @@ public class VistaRestriccions extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("DEFINIR RESTRICCIONS");
 
-        jComboBox1.setBackground(new java.awt.Color(51, 51, 255));
-        jComboBox1.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Georgia Pro Black", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("MONITOR SELECTOR");
@@ -99,26 +80,6 @@ public class VistaRestriccions extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Georgia Pro Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("MONITORS AMB QUI NO VOLS ANAR");
-
-        jComboBox2.setBackground(new java.awt.Color(255, 51, 51));
-        jComboBox2.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jComboBox3.setBackground(new java.awt.Color(255, 51, 51));
-        jComboBox3.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Georgia Pro Black", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,6 +126,33 @@ public class VistaRestriccions extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Georgia Pro Cond", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setFont(new java.awt.Font("Georgia Pro Cond", 1, 14)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.setFont(new java.awt.Font("Georgia Pro Cond", 1, 14)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,23 +165,21 @@ public class VistaRestriccions extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2))
+                            .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(48, 48, 48)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton4))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2))
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(68, 68, 68)
+                                    .addComponent(jButton2))))))
+                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -206,21 +192,21 @@ public class VistaRestriccions extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(57, 57, 57)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(22, 22, 22)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(48, 48, 48)
+                    .addComponent(jButton2)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
@@ -231,64 +217,23 @@ public class VistaRestriccions extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-        //MONITOR SELECTOR
-        String[] nomMonis = new String[this.monitors.size()];
-        for (int i = 0; i < monitors.size(); ++i) {
-            nomMonis[i] = monitors.get(i).get(0);
-        }
-        JComboBox jComboBox1 = new JComboBox (nomMonis);
-        jComboBox1.setSelectedIndex(nomMonis.length);
-        this.moniActual = (String)jComboBox1.getSelectedItem();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-        //MONITOR REBUTJAT
-        //t'has de treure al monitor selector perquè no et puguis rebutjar a tu mateix
-        String[] nomMonis = new String[this.monitors.size()];
-        for (int i = 0; i < monitors.size(); ++i) {
-            nomMonis[i] = monitors.get(i).get(0);
-        }
-        JComboBox jComboBox2 = new JComboBox (nomMonis);
-        jComboBox2.setSelectedIndex(nomMonis.length);
-        this.moniNoActual = (String)jComboBox2.getSelectedItem();
-        
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-        //COLLA REBUTJADA
-        String[] nomColles = new String[this.colles.size()];
-        for (int i = 0; i < colles.size(); ++i) {
-            nomColles[i] = colles.get(i).get(0);
-        }
-        JComboBox jComboBox3 = new JComboBox (nomColles);
-        jComboBox2.setSelectedIndex(nomColles.length);
-        this.collaNoActual = (String)jComboBox2.getSelectedItem();
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
         //hem de passar cap al controladorPresentacio la restriccio del moniActual
-        CtrlPresentacio.afegeixIncompatibilitats(moniActual, monisNo, collesNo);
+
+        CtrlPresentacio.afegeixIncompatibilitats(moniActual, monisNo, collesNo);      
+                    
+        
         this.monisNo = new ArrayList();
         this.collesNo = new ArrayList();
         this.collaNoActual = new String();
@@ -297,20 +242,38 @@ public class VistaRestriccions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // botó per passar a la solució:
+        this.CtrlPresentacio.sincroVistaRAVistaS();    
+        this.CtrlPresentacio.generarSolucions();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //afegim a la llista de monisNo del moni actual els monis que seleccionem
+        moniActual = jTextField2.getText();
+        moniNoActual = jTextField3.getText();
         monisNo.add(moniNoActual);
-               
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        collesNo.add(collaNoActual);
+        //afegim colles que no volem
+        collaNoActual = jTextField1.getText();
+        collesNo.add(collaNoActual);        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -318,13 +281,13 @@ public class VistaRestriccions extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
